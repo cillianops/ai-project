@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索自然 - 徒步旅行</title>
+    <link href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            /* @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; */
+        }
+        h1, h2, h3 {
+            font-family: 'Noto Serif SC', serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            /* @apply min-h-screen flex flex-col justify-center items-center text-white; */
+        }
+        .card {
+            @apply transition-all duration-300 bg-white dark:bg-gray-800 rounded-lg shadow-md;
+        }
+        .card:hover {
+            @apply transform -translate-y-2 shadow-lg;
+        }
+        .btn {
+            @apply transition-all duration-300 bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-full text-lg font-medium;
+        }
+        .btn:hover {
+            @apply scale-105 bg-green-600;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .divider {
+            @apply my-12 border-t border-gray-200 dark:border-gray-700;
+        }
+        img {
+            @apply bg-gray-200 dark:bg-gray-700; /* 占位背景 */
+        }
+        .mermaid svg {
+            @apply max-w-full mx-auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero 模块 -->
+    <header class="hero-bg h-screen flex flex-col justify-center items-center text-white">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">探索自然，徒步人生</h1>
+        <p class="text-xl md:text-2xl mb-8">从第一步开始，迎接未知的旅程</p>
+        <button class="btn bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-full text-lg">开启探险</button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-16">
+        <!-- 热门路线 -->
+        <section id="routes" class="mb-16 fade-in">
+            <h2 class="text-4xl font-bold mb-8 text-center">热门路线</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                <div class="card p-6">
+                    <img src="https://pixabay.com/get/g44dee73db9bb71093319e9eb75646a876958afd954c0e4336376d4ad2703b714caad35b9f23632e8b1a045b89f19bfa5_640.jpg" 
+                         alt="山脉" 
+                         class="w-full h-48 object-cover rounded-t-lg" 
+                         loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/400x300?text=山脉'">
+                    <h3 class="text-2xl font-bold mt-4">山脉探险</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">挑战高海拔，领略壮丽景色。从巍峨的山峰到深邃的峡谷，每一步都是对自我的超越。</p>
+                </div>
+                <div class="card p-6">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="森林" 
+                         class="w-full h-48 object-cover rounded-t-lg" 
+                         loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/400x300?text=森林'">
+                    <h3 class="text-2xl font-bold mt-4">森林漫步</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">在绿意盎然的森林中放松身心，聆听鸟鸣，感受自然的呼吸。</p>
+                </div>
+                <div class="card p-6">
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="小径" 
+                         class="w-full h-48 object-cover rounded-t-lg" 
+                         loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/400x300?text=小径'">
+                    <h3 class="text-2xl font-bold mt-4">小径探索</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">沿着蜿蜒的小径，发现隐藏的宝藏，每一次转弯都可能带来惊喜。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 徒步技巧 -->
+        <section id="tips" class="mb-16 fade-in">
+            <h2 class="text-4xl font-bold mb-8 text-center">徒步技巧</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+                <div class="card p-6">
+                    <i class="fas fa-shoe-prints text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">选择合适的鞋子</h3>
+                    <p class="text-gray-600 dark:text-gray-400">一双舒适、防滑的徒步鞋是成功的关键。优先选择透气性好、抓地力强的款式，保护你的双脚。</p>
+                </div>
+                <div class="card p-6">
+                    <i class="fas fa-backpack text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">准备必需装备</h3>
+                    <p class="text-gray-600 dark:text-gray-400">带上水、食物、地图和急救包。轻量化装备能减轻负担，让旅程更轻松。</p>
+                </div>
+                <div class="card p-6">
+                    <i class="fas fa-compass text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">掌握导航技能</h3>
+                    <p class="text-gray-600 dark:text-gray-400">学会使用地图和指南针，即使信号中断也能找到方向。</p>
+                </div>
+                <div class="card p-6">
+                    <i class="fas fa-cloud-sun text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">关注天气变化</h3>
+                    <p class="text-gray-600 dark:text-gray-400">提前查看天气预报，避免恶劣天气，确保安全出行。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 数据可视化 -->
+        <section id="prep" class="mb-16 fade-in">
+            <h2 class="text-4xl font-bold mb-8 text-center">徒步准备流程</h2>
+            <div class="mermaid">
+                graph TD
+                    A[选择目的地] --> B[规划路线]
+                    B --> C[准备装备]
+                    C --> D[检查天气]
+                    D --> E[出发探险]
+                    click A "alert('选择一个你向往的目的地！')"
+                    click E "alert('祝你旅途愉快！')"
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 社区故事 -->
+        <section id="community" class="mb-16 fade-in">
+            <h2 class="text-4xl font-bold mb-8 text-center">社区故事</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                <div class="card p-6">
+                    <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="徒步者" 
+                         class="w-full h-48 object-cover rounded-t-lg" 
+                         loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/400x300?text=徒步者'">
+                    <h3 class="text-xl font-bold mt-4">山顶的日出</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">"山顶的日出让我忘记了疲惫，值得凌晨的攀登。" - 张三</p>
+                </div>
+                <div class="card p-6">
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="森林" 
+                         class="w-full h-48 object-cover rounded-t-lg" 
+                         loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/400x300?text=森林'">
+                    <h3 class="text-xl font-bold mt-4">森林的呼吸</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">"森林里的空气让人焕然一新，仿佛洗净了城市喧嚣。" - 李四</p>
+                </div>
+                <div class="card p-6">
+                    <img src="https://images.unsplash.com/photo-1470770841072-4d2826e768b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="露营" 
+                         class="w-full h-48 object-cover rounded-t-lg" 
+                         loading="lazy" 
+                         onerror="this.src='https://pixabay.com/get/g44dee73db9bb71093319e9eb75646a876958afd954c0e4336376d4ad2703b714caad35b9f23632e8b1a045b89f19bfa5_640.jpg'">
+                    <h3 class="text-xl font-bold mt-4">星空下的帐篷</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">"夜晚的星空值得一游，露营让我感受到自然的宁静。" - 王五</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 徒步装备推荐 -->
+        <section id="gear" class="mb-16 fade-in">
+            <h2 class="text-4xl font-bold mb-8 text-center">徒步装备推荐</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                <div class="card p-6">
+                    <i class="fas fa-tshirt text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mt-2">速干衣物</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">轻便、透气，适合长时间徒步，保持身体干爽。</p>
+                </div>
+                <div class="card p-6">
+                    <i class="fas fa-water text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mt-2">便携水壶</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">随时补充水分，推荐带过滤功能的款式。</p>
+                </div>
+                <div class="card p-6">
+                    <i class="fas fa-tent text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mt-2">轻量化帐篷</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">便于携带，提供舒适的露营体验。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">© 2025 徒步旅行. 保留所有权利。</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="text-green-400 hover:text-green-300"><i class="fab fa-weixin"></i></a>
+                <a href="#" class="text-green-400 hover:text-green-300"><i class="fab fa-weibo"></i></a>
+                <a href="#" class="text-green-400 hover:text-green-300"><i class="fab fa-qq"></i></a>
+            </div>
+            <div class="mt-6 text-sm">
+                <p class="font-bold mb-2">延伸阅读</p>
+                <ul class="list-disc list-inside">
+                    <li><a href="#" class="text-green-400 hover:underline">《野外求生》 - Bear Grylls：实用徒步指南</a></li>
+                    <li><a href="#" class="text-green-400 hover:underline">《徒步中国》 - 王石：国内路线探索</a></li>
+                    <li><a href="#" class="text-green-400 hover:underline">《户外运动心理学》 - 心理益处研究</a></li>
+                    <li><a href="#" class="text-green-400 hover:underline">《Into the Wild》 - Jon Krakauer：真实探险故事</a></li>
+                    <li><a href="#" class="text-green-400 hover:underline">《中国国家地理》 - 徒步目的地推荐</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 深色模式切换按钮 -->
+    <button id="darkModeToggle" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600" aria-label="切换深色模式">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        // 初始化 Mermaid
+        mermaid.initialize({ startOnLoad: true });
+
+        // 深色模式切换
+        const toggleButton = document.getElementById('darkModeToggle');
+        const toggleDarkMode = () => {
+            document.body.classList.toggle('dark');
+            toggleButton.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        };
+
+        // 检查系统偏好
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+            toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        toggleButton.addEventListener('click', toggleDarkMode);
+
+        // 滚动淡入效果
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
